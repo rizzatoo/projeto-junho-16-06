@@ -6,67 +6,67 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Você recebe uma mensagem em seu celular dizendo que uma nova tecnologia foi criada, capaz de traduzir pensamentos em palavras em tempo real. O que você pensa sobre isso?",
+        enunciado: "Você acorda em um dia de folga e o clima está perfeito. O que decide fazer?",
         alternativas: [
             {
-                texto: "Isso pode mudar a maneira como nos comunicamos para sempre!",
-                afirmacao: "Sentiu-se animado com as possibilidades e começou a imaginar novas formas de se expressar usando essa tecnologia."
+                texto: "Saio para uma caminhada e aproveito a natureza.",
+                afirmacao: "Conectou-se com o ambiente ao redor e sentiu uma paz profunda."
             },
             {
-                texto: "Isso parece invasivo, não sei se seria bom compartilhar meus pensamentos assim.",
-                afirmacao: "Ficou receoso e decidiu pesquisar mais sobre segurança e privacidade digital."
+                texto: "Fico em casa para descansar e curtir um tempo sozinho.",
+                afirmacao: "Teve um dia relaxante e refletiu sobre seus próprios sentimentos."
             }
         ]
     },
     {
-        enunciado: "Ao descobrir essa nova tecnologia, um amigo sugere que você a use para melhorar a produtividade nos estudos. O que você faz?",
+        enunciado: "Um amigo te convida para participar de um projeto voluntário. Qual sua reação?",
         alternativas: [
             {
-                texto: "Aceito de imediato, quero ver como isso pode ajudar nos meus estudos.",
-                afirmacao: "Experimentou a tecnologia nos estudos e percebeu ganhos na organização e foco."
+                texto: "Aceito na hora! Adoro ajudar os outros.",
+                afirmacao: "Sentiu-se útil e percebeu o impacto positivo que pode causar."
             },
             {
-                texto: "Fico desconfiado e prefiro estudar da forma tradicional, com foco e disciplina.",
-                afirmacao: "Escolheu manter seu ritmo tradicional e sentiu orgulho da própria dedicação."
+                texto: "Recuso educadamente, pois estou focado em outros objetivos no momento.",
+                afirmacao: "Respeitou seus limites e entendeu que ajudar também envolve equilíbrio pessoal."
             }
         ]
     },
     {
-        enunciado: "Um especialista em tecnologia na escola fala sobre como a IA pode substituir muitas profissões no futuro. O que você pensa sobre isso?",
+        enunciado: "Durante uma conversa difícil, alguém te interrompe e te julga sem ouvir. Como você reage?",
         alternativas: [
             {
-                texto: "Eu vejo oportunidades para novos tipos de trabalho surgirem.",
-                afirmacao: "Acredita que a adaptação é chave e está disposto a aprender sempre."
+                texto: "Mantenho a calma e tento explicar meu ponto de vista.",
+                afirmacao: "Mostrou maturidade e buscou o diálogo mesmo diante do conflito."
             },
             {
-                texto: "Fico preocupado, pois muitos podem ficar sem emprego.",
-                afirmacao: "Passou a refletir sobre como equilibrar tecnologia e justiça social."
+                texto: "Me afasto da discussão para evitar mais estresse.",
+                afirmacao: "Escolheu preservar sua saúde emocional em vez de insistir na briga."
             }
         ]
     },
     {
-        enunciado: "Você tem um projeto para criar uma apresentação sobre a IA e decide usar a nova tecnologia para montar os slides. O que você faz?",
+        enunciado: "Você tem a chance de fazer um intercâmbio para outro país. O que faz?",
         alternativas: [
             {
-                texto: "Usar a IA para me ajudar parece uma boa ideia, vai economizar meu tempo.",
-                afirmacao: "Descobriu ferramentas incríveis e se tornou referência entre os colegas."
+                texto: "Aproveito a oportunidade para viver uma nova experiência.",
+                afirmacao: "Expandiu seus horizontes e cresceu com os desafios da nova cultura."
             },
             {
-                texto: "Prefiro fazer a apresentação sozinho, quero aprender o máximo possível no processo.",
-                afirmacao: "Aprofundou-se no tema e sentiu-se satisfeito com o próprio esforço."
+                texto: "Recuso, pois não me sinto preparado para sair da minha zona de conforto agora.",
+                afirmacao: "Respeitou seu momento e decidiu se preparar melhor para o futuro."
             }
         ]
     },
     {
-        enunciado: "Sua professora pede para vocês discutirem se a IA deve ou não ser usada para decisões importantes, como em hospitais ou tribunais. Qual sua posição?",
+        enunciado: "Você precisa decidir entre seguir uma carreira segura ou arriscar em um sonho. O que escolhe?",
         alternativas: [
             {
-                texto: "A IA pode ajudar muito, mas precisa ser supervisionada de perto.",
-                afirmacao: "Defendeu o uso ético e responsável da tecnologia."
+                texto: "Sigo meu sonho, mesmo com os riscos.",
+                afirmacao: "Acreditou no seu potencial e decidiu trilhar um caminho autêntico."
             },
             {
-                texto: "A IA não deveria tomar decisões importantes, pois ela pode cometer erros.",
-                afirmacao: "Argumentou que o fator humano ainda é essencial em decisões delicadas."
+                texto: "Escolho a segurança, pensando na estabilidade da minha vida.",
+                afirmacao: "Priorizou o equilíbrio e fez um plano sólido para o futuro."
             }
         ]
     }
@@ -104,7 +104,7 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
+    caixaPerguntas.textContent = "Ao final da jornada...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
 }
