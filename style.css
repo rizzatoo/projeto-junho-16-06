@@ -1,61 +1,43 @@
-/* Define o fundo da página */
+:root{
+    --cor-fundo: #000000 ;
+    --cor-principal: #0f7e66 ;
+    --cor-secundaria: #37c0c5; 
+    --cor-destaque: #ffffff;
+    --cor-texto: #D7F9FF;
+
+}
+
 body {
-    background-color: #f0f0f0; /* Cor de fundo claro */
-    font-family: Arial, sans-serif;
-    color: #333; /* Cor do texto */
-}
-
-/* Caixa principal */
-.caixa-principal {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff; /* Cor de fundo branca para a caixa principal */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Caixa de perguntas */
-.caixa-perguntas {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #4a90e2; /* Cor azul para as perguntas */
-    margin-bottom: 20px;
-}
-
-/* Caixa de alternativas */
-.caixa-alternativas {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.caixa-alternativas button {
-    background-color: #4CAF50; /* Cor verde para os botões de resposta */
-    color: white;
-    padding: 10px;
+.caixa-principal{
+    background-color: var(--cor-principal);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+}
+
+h1{
+    color: var(--cor-destaque);
+}
+
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+    border-radius: 15px;
+    padding: 15px;
     transition: background-color 0.3s;
 }
 
-.caixa-alternativas button:hover {
-    background-color: #45a049; /* Cor verde mais escuro no hover */
-}
-
-/* Caixa de resultado */
-.caixa-resultado {
-    background-color: #fff3e6; /* Cor de fundo suave para o resultado */
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #e5e5e5;
-}
-
-/* Texto do resultado */
-.texto-resultado {
-    color: #e77f1f; /* Cor alaranjada para o texto de resultado */
-    font-size: 1.1rem;
-    font-weight: normal;
+button:hover{
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
 }
