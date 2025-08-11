@@ -3,18 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Ana Rizzato</title>
+    <title>Ana Rizzato - Seu Futuro</title>
+    <style>
+        /* Estilos CSS embutidos */
+        :root {
+            --cor-fundo: #000000;
+            --cor-principal: #0f7e66;
+            --cor-secundaria: #37c0c5;
+            --cor-destaque: #ffffff;
+            --cor-texto: #D7F9FF;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif; /* Adiciona uma fonte padrão */
+        }
+
+        .caixa-principal {
+            background-color: var(--cor-principal);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .caixa-perguntas {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            min-height: 60px; /* Garante altura mínima para evitar pulos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            opacity: 0; /* Inicialmente invisível para a animação */
+            transform: translateY(20px); /* Inicialmente deslocado para a animação */
+        }
+
+        .caixa-alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espaçamento entre os botões */
+            width: 100%;
+            opacity: 0; /* Inicialmente invisível para a animação */
+            transform: translateY(20px); /* Inicialmente deslocado para a animação */
+        }
+
+        button {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto);
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%; /* Ocupa a largura total da caixa de alternativas */
+        }
+
+        button:hover {
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            transform: translateY(0);
+        }
+
+        .caixa-resultado {
+            margin-top: 20px;
+            font-size: 1.1em;
+            text-align: left; /* Alinha o texto do resultado à esquerda */
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 20px;
+        }
+
+        .texto-resultado {
+            line-height: 1.5; /* Espaçamento entre linhas */
+        }
+
+        .barra-progresso {
+            width: 0%;
+            height: 10px;
+            background-color: var(--cor-secundaria);
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Animações */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards; /* 'forwards' mantém o estado final da animação */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="caixa-principal">
-        <h1>Você é o principal responsavel por construir o seu futuro</h1>
+        <h1>Você é o principal responsável por construir o seu futuro</h1>
+        <div class="barra-progresso"></div> <!-- Barra de progresso -->
         <div class="caixa-perguntas"></div>
         <div class="caixa-alternativas"></div>
         <div class="caixa-resultado">
             <p class="texto-resultado"></p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // JavaScript embutido
+        const caixaPrincipal = document.querySelector(".caixa-principal");
+        const caixaPerguntas = document.querySelector(".caixa-perguntas");
+        const caixaAlternativas = document.querySelector(".caixa-alternativas");
+        const caixaResultado = document.querySelector(".caixa-resultado");
+        const textoResultado = document.querySelector(".texto-resultado");
+        const barraProgresso = document.querySelector(".barra-progresso");
+
+        const perguntas = [
+            {
+                enunciado: "Você acorda em um dia de folga e o clima está perfeito. O que decide fazer?",
+                alternativas: [
+                    {
+                        texto: "Saio para uma caminhada e aproveito a natureza.",
+                        afirmacao: "Conectou-se com o ambiente ao redor e sentiu uma paz profunda."
+                    },
+                    {
+                        texto: "Fico em casa para descansar e curtir um tempo sozinho.",
+                        afirmacao: "Teve um dia relaxante e refletiu sobre seus próprios sentimentos."
+                    }
+                ]
+            },
+            {
+                enunciado: "Um amigo te convida para participar de um projeto voluntário. Qual sua reação?",
+                alternativas: [
+                    {
+                        texto: "Aceito na hora! Adoro ajudar os outros.",
+                        afirmacao: "Sentiu-se útil e percebeu o impacto positivo que pode causar."
+                    },
+                    {
+                        texto: "Recuso educadamente, pois estou focado em outros objetivos no momento.",
+                        afirmacao: "Respeitou seus limites e entendeu que ajudar também envolve equilíbrio pessoal."
+                    }
+                ]
+            },
+            {
+                enunciado: "Durante uma conversa difícil, alguém te interrompe e te julga sem ouvir. Como você reage?",
+                alternativas: [
+                    {
+                        texto: "Mantenho a calma e tento explicar meu ponto de vista.",
+                        afirmacao: "Mostrou maturidade e buscou o diálogo mesmo diante do conflito."
+                    },
+                    {
+                        texto: "Me afasto da discussão para evitar mais estresse.",
+                        afirmacao: "Escolheu preservar sua saúde emocional em vez de insistir na briga."
+                    }
+                ]
+            },
+            {
+                enunciado: "Você tem a chance de fazer um intercâmbio para outro país. O que faz?",
+                alternativas: [
+                    {
+                        texto: "Aproveito a oportunidade para viver uma nova experiência.",
+                        afirmacao: "Expandiu seus horizontes e cresceu com os desafios da nova cultura."
+                    },
+                    {
+                        texto: "Recuso, pois não me sinto preparado para sair da minha zona de conforto agora.",
+                        afirmacao: "Respeitou seu momento e decidiu se preparar melhor para o futuro."
+                    }
+                ]
+            },
+            {
+                enunciado: "Você precisa decidir entre seguir uma carreira segura ou arriscar em um sonho. O que escolhe?",
+                alternativas: [
+                    {
+                        texto: "Sigo meu sonho, mesmo com os riscos.",
+                        afirmacao: "Acreditou no seu potencial e decidiu trilhar um caminho autêntico."
+                    },
+                    {
+                        texto: "Escolho a segurança, pensando na estabilidade da minha vida.",
+                        afirmacao: "Priorizou o equilíbrio e fez um plano sólido para o futuro."
+                    }
+                ]
+            }
+        ];
+
+        let atual = 0;
+        let perguntaAtual;
+        let historiaFinal = "";
+
+        function mostraPergunta() {
+            if (atual >= perguntas.length) {
+                mostraResultado();
+                return;
+            }
+
+            perguntaAtual = perguntas[atual];
+
+            // Remove classes de animação para resetar e aplicar novamente
+            caixaPerguntas.classList.remove("fade-in");
+            caixaAlternativas.classList.remove("fade-in");
+
+            // Força o reflow para reiniciar a animação
+            void caixaPerguntas.offsetWidth;
+            void caixaAlternativas.offsetWidth;
+
+            caixaPerguntas.textContent = perguntaAtual.enunciado;
+            caixaAlternativas.innerHTML = ""; // Usa innerHTML para limpar mais facilmente
+
+            // Adiciona classes de animação
+            caixaPerguntas.classList.add("fade-in");
+            caixaAlternativas.classList.add("fade-in");
+
+            mostraAlternativas();
+            atualizaBarraProgresso();
+        }
+
+        function mostraAlternativas(){
+            for(const alternativa of perguntaAtual.alternativas) {
+                const botaoAlternativas = document.createElement("button");
+                botaoAlternativas.textContent = alternativa.texto;
+                botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+                caixaAlternativas.appendChild(botaoAlternativas);
+            }
+        }
+
+        function respostaSelecionada(opcaoSelecionada) {
+            const afirmacoes = opcaoSelecionada.afirmacao;
+            historiaFinal += afirmacoes + " ";
+            atual++;
+            mostraPergunta();
+        }
+
+        function mostraResultado() {
+            caixaPerguntas.textContent = "Ao final da jornada...";
+            textoResultado.textContent = historiaFinal;
+            caixaAlternativas.innerHTML = ""; // Limpa as alternativas
+
+            // Adiciona botão de reiniciar
+            const botaoReiniciar = document.createElement("button");
+            botaoReiniciar.textContent = "Jogar Novamente";
+            botaoReiniciar.addEventListener("click", reiniciarQuiz);
+            caixaAlternativas.appendChild(botaoReiniciar); // Adiciona na caixa de alternativas para centralizar
+
+            barraProgresso.style.width = "100%"; // Completa a barra de progresso
+        }
+
+        function reiniciarQuiz() {
+            atual = 0;
+            historiaFinal = "";
+            textoResultado.textContent = ""; // Limpa o texto do resultado
+            mostraPergunta();
+        }
+
+        function atualizaBarraProgresso() {
+            const progresso = (atual / perguntas.length) * 100;
+            barraProgresso.style.width = `${progresso}%`;
+        }
+
+        // Inicia o quiz
+        mostraPergunta();
+    </script>
 </body>
 </html>
